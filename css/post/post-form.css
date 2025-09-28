@@ -1,0 +1,158 @@
+.post-form-page .container,
+.post-form-wrapper {
+    max-width: 680px;
+    margin-inline: auto;
+}
+
+/* cards */ 
+.post-form-wrapper {
+    margin: 2rem auto 4rem;
+    padding: 1.25rem;
+    background: #f9fafb;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.04);
+}
+
+/* heading */ 
+.post-form-wrapper h1 {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font: 700 1.25rem/1.2 "Poppins", "sans-serif";
+    color: var(--text);
+    margin: 0 0 2rem;
+}
+
+/* back to feed link */ 
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-link:hover { text-decoration: underline; }
+
+/* form layout */
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+/* labels */ 
+.post-form label {
+    font-weight: 600;
+    color: var(--text);
+    font-size: .95rem;
+}
+
+/* input + textarea */ 
+.post-form input,
+.post-form textarea {
+    width: 100%;
+    padding: .7rem .8rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fdfdfd;
+    color: var(--text);
+    font: 400 1rem/1.4 "Inter", sans-serif;
+    transition: border-color .15s ease box-shadow .15s ease;
+}
+
+/* focus ring */
+.post-form input:focus,
+.post-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-600);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary-600));
+}
+
+/* small hint text */
+.hint {
+    display: inline-block;
+    font-size: .8rem;
+    color: var(--muted);
+    margin-top: -.4rem;
+}
+
+/* buttons */
+.publish-btn,
+.save-btn,
+.delete-btn {
+    font-size: 1rem;
+    line-height: 1.2;
+    padding: .7rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .06s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+/* publish/save */
+.publish-btn,
+.save-btn {
+    color: #fff;
+    background: linear-gradient(120deg, var(--primary-600), var(--primary-700));
+}
+
+.publish-btn:hover,
+.save-btn:hover,
+.delete-btn:hover {
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.publish-btn:active,
+.save-btn:active { transform: translateY(1px);}
+
+/* danger (delete) */ 
+.delete-btn {
+    background: #fee2e2;
+    color: #901818;
+    border: 1px solid #fecaca;
+}
+
+/* error text */
+#edit-message,
+#create-message,
+.form-error {
+    margin-top: .5rem;
+    font-size: .9rem;
+    color: var(--muted);
+}
+
+.form-error { color: #b91c1c; }
+
+
+/* Log out - my profile - links - showing in header */ 
+.show-when-auth {
+    display: inline-block;
+}
+
+[hidden] {
+    display: none;
+}
+
+/* log out & my profile btn */
+.nav-link,
+.btn-link {
+    font: inherit;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    background: none;
+}
+
+@media (max-width: 560px) {
+    .post-form-wrapper { padding: 1rem; }
+    .post-form { gap: .75rem; }
+}
+
+#post-content,
+#edit-content,
+#post-body,
+#edit-body { min-height: 10rem; resize: vertical;}
