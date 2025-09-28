@@ -45,3 +45,10 @@ The application connects to the [Noroff v2 API] for authentication, posts, and p
 - Error and loading states for all API calls
 - Prettier for consistent code formatting
 - At least 3 functions documented with **JSDoc**
+
+## Project plan
+https://github.com/users/Khauku/projects/4/views/1
+
+## Assistance
+During development I used [ChatGPT](https://chatgpt.com) as a supportive tool to help debug issues, better understand JavaScript logic, and refine code structure. 
+
