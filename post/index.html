@@ -17,16 +17,19 @@
     <link rel="stylesheet" href="../css/post/post.css">
 </head>
 <body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a class="brand" href="../index.html">SMA</a>
-        <nav class="nav" aria-label="Primary">
+<header class="bg-white border-b border-[var(--border)]">
+    <div class="container header-inner flex items-center justify-between min-h-16 py-3">
+        <a class="brand text-2xl text-[var(--text)]" href="index.html">SMA</a>
+        <nav class="nav flex gap-4" aria-label="Primary">
             <!--When logged out-->
-            <a class="nav-link hide-when-auth" href="../login.html">Sign in</a>
-            <a class="nav-link hide-when-auth" href="../register.html">Register</a>
+            <a class="nav-link hide-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition" href="../login.html">Sign in</a>
+            <a class="nav-link hide-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition" href="../register.html">Register</a>
             <!--When logged in-->
-            <a class="nav-link show-when-auth" href="../profile.html">Profile</a>
-            <button class="nav-link btn-link show-when-auth" id="logoutBtn" type="button">Logout</button>
+            <a class="nav-link show-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition" href="../post/create.html">+ New post</a>
+            <a class="nav-link show-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition cursor-pointer" href="../profile.html">My profile</a>
+            <button class="nav-link btn-link show-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition cursor-pointer" id="logoutBtn" type="button">
+                Logout
+            </button>
         </nav>
     </div>
 </header>
