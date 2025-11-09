@@ -2,12 +2,12 @@
     --bg: #f5f7fb;
     --card: #fff;
     --text: #0f172a;
-    --muted: #6b7280;
+    --muted: #545964;
     --border: #e5e7eb;
     --ring: #93c5fd;
     --primary: #1A075F;
-    --primary-600: #1A0A53;
-    --primary-700: #11053B;
+    --primary-600: #260E7C;
+    --primary-700: #1D0D59;
     --shadow: 0 10px 30px rgba(59, 130, 246, .20); 
 }
 
@@ -61,6 +61,6 @@ body {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-btn:hover {
+.btn:hover {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }

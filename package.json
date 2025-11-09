@@ -1,0 +1,20 @@
+{
+  "name": "javascript-2---course-assignment",
+  "version": "1.0.0",
+  "description": "## Overview This is the Javascript 2 Course Assingment project.  The goal is to build the front-end for a small **social media application** using **vanilla Javascript ( ES modules)**.  The application connects to the [Noroff v2 API] for authentication, posts, and profile data.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -c ./tailwind.config.js -i ./css/tailwind.css -o ./css/main.css --watch",
+    "build": "tailwindcss -c ./tailwind.config.js -i ./css/tailwind.css -o ./css/main.css --minify",
+    "build:pretty": "tailwindcss -i ./css/tailwind.css -o ./css/main.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.17",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17"
+  }
+}

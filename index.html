@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Google fonts - Poppins & Inter-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,41 +12,41 @@
     <!--Metadata & stylesheets-->
     <meta name="description" content="A simple social media application built with vanilla JavaScript. View posts, create your own, and explore user profile.">
     <title>Social Media App | Feed</title>
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/shared/global.css">
-    <link rel="stylesheet" href="css/feed.css">
-</head>
-<body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a class="brand" href="index.html">SMA</a>
-        <nav class="nav" aria-label="Primary">
-            <!--When logged out-->
-            <a class="nav-link hide-when-auth" href="login.html">Sign in</a>
-            <a class="nav-link hide-when-auth" href="register.html">Register</a>
-            <!--When logged in-->
-            <a class="nav-link show-when-auth" href="profile.html">My profile</a>
-            <button class="nav-link btn-link show-when-auth" id="logoutBtn" type="button">Logout</button>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <header class="bg-white border-b border-[var(--border)]">
+      <div class="container header-inner flex items-center justify-between min-h-16 py-3">
+        <a class="brand text-2xl text-[var(--text)]" href="index.html">SMA</a>
+        <nav class="nav flex gap-4" aria-label="Primary">
+          <!--When logged out-->
+          <a class="nav-link hide-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition" href="login.html">Sign in</a>
+          <a class="nav-link hide-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition" href="register.html">Register</a>
+          <!--When logged in-->
+          <a class="nav-link show-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition" href="profile.html">My profile</a>
+          <button class="nav-link btn-link show-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition" id="logoutBtn" type="button">
+            Logout
+          </button>
         </nav>
-    </div>
-</header>
-<main>
-    <section class="feed" aria-label="Latest posts">
-        <div class="container">
-            <h1 class="section-heading">Latest posts</h1>
-            <div class="feed-toolbar">
-                <p id="feedStatus" class="status" aria-live="polite"></p>
-            </div>
-            <div class="feed-list"></div>
-            <noscript>
-                <p>Please enable Javascript to see the latest posts</p>
-            </noscript>
+      </div>
+    </header>
+    <main>
+      <section class="bg-[var(--bg)] py-8" aria-label="Latest posts">
+        <div class="mx-auto w-full max-w-[680px] px-4">
+          <h1 class="section-heading text-[var(--text)] mb-2 md:mb-3">Latest posts</h1>
+          <div class="feed-toolbar">
+            <p id="feedStatus" class="text-sm text-[(var--muted)] mb-4" aria-live="polite"></p>
+          </div>
+          <div class="flex flex-col gap-6 w-full feed-list"></div>
+          <noscript>
+            <p>Please enable Javascript to see the latest posts</p>
+          </noscript>
         </div>
-    </section>        
-</main>
-<footer>
-</footer>
-<script type="module" src="js/main/feed.js"></script>
-<script type="module" src="js/main/header.js"></script> 
-</body>
+      </section>
+    </main>
+    <footer></footer>
+    <script type="module" src="js/main/feed.js"></script>
+    <script type="module" src="js/main/header.js"></script>
+  </body>
 </html>

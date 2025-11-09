@@ -12,36 +12,43 @@
     <!--Metadata & stylesheets-->
     <title>Social Media App - Profile | Manage your posts</title>
     <meta name="description" content="View and manage your profile page, see your posts, and keep track of followers on the social media app">
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/shared/global.css">
-    <link rel="stylesheet" href="css/feed.css">
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a class="brand" href="index.html">SMA</a>
-        <nav class="nav" aria-label="Primary">
+<header class="bg-white border-b border-[var(--border)]">
+    <div class="container header-inner flex items-center justify-between min-h-16 py-3">
+        <a class="brand text-2xl text-[var(--text)]" href="index.html">SMA</a>
+        <nav class="nav flex gap-4" aria-label="Primary">
             <!--When logged out-->
-            <a class="nav-link hide-when-auth" href="login.html">Sign in</a>
-            <a class="nav-link hide-when-auth" href="register.html">Register</a>
+            <a class="nav-link hide-when-auth text-[var(--text)] hover:underline underline-offset-4 decoration-[var(--primary)] transition" href="login.html">Sign in</a>
+            <a class="nav-link hide-when-auth text-[var(--text)] hover:underline underline-offset-4 decoration-[var(--primary)] transition" href="register.html">Register</a>
             <!--When logged in-->
-            <a class="nav-link" show-when-auth href="post/create.html">+ New post</a>
-            <a class="nav-link show-when-auth" href="../profile.html">Profile</a>
-            <button class="nav-link btn-link show-when-auth" id="logoutBtn" type="button">Logout</button>
+            <a class="nav-link show-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition" href="post/create.html">+ New post</a>
+            <a class="nav-link show-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition cursor-pointer" href="profile.html">My profile</a>
+            <button class="nav-link btn-link show-when-auth text-[var(--text)] font-semibold hover:underline underline-offset-4 decoration-[var(--primary)] transition cursor-pointer" id="logoutBtn" type="button">
+                Logout
+            </button>
         </nav>
     </div>
 </header>
 <main>
-    <section class="feed" aria-label="Latest posts">
-        <div class="container">
-            <div id="profileHeaderMount"></div>
-            <h1 class="section-heading">Latest posts</h1>
-            <div class="feed-toolbar">
-                <input type="search" id="postSearch" class="input" placeholder="Search posts..." aria-label="Search posts">
-                <p id="feedStatus" class="status" aria-live="polite"></p>
+    <section class="bg-[var(--bg)] py-8" aria-label="Latest posts">
+        <div class="mx-auto w-full max-w-[680px] px-4">
+            <div id="profileHeaderMount" class="mb-10"></div>
+            <h1 class="section-heading text-2xl font-bold text-[var(--text)] mb-2 md:mb-3">Latest posts</h1>
+            <div class="flex items-center justify-between gap-3 mt-0 mb-4 md:flex-nowrap">
+                <input 
+                type="search" 
+                id="postSearch" 
+                placeholder="Search posts..." 
+                aria-label="Search posts" 
+                class="w-full sm:w-[210px] rounded-lg border border-[var(--border)] bg-white text-[var(--text)]
+                px-3 py-2 text-sm font-medium transition focus:outline-none focus:ring-4  focus:ring-indigo-200
+                placeholder:text-[var(--muted)]">
+                <p id="feedStatus" class="shrink-0 md:ml-4 text-sm text-[var(--muted)]" aria-live="polite"></p>
             </div>
-            <div class="feed-list"></div>
+            <div class="flex flex-col gap-6 w-full feed-list"></div>
             <noscript>
                 <p>Please enable Javascript to see the latest posts</p>
             </noscript>

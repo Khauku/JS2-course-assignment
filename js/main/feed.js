@@ -51,26 +51,27 @@ function renderCard(p) {
 
     // Card HTML
     return `
-    <article class="post-card">
-      <header class="post-card_head">
+    <article class="bg-white border border-[var(--border)] rounded-xl shadow overflow-x-hidden transition">
+      <header class="flex items-center gap-3 p-3">
         ${avatarUrl 
-            ? `<img src="${avatarUrl}" alt="${author}'s avatar" class="post-card_avatar">` 
-            : `<div class="post-card_avatar" aria-hidden="true"></div>`
+            ? `<img src="${avatarUrl}" alt="${author}'s avatar" 
+               class="w-10 h-10 rounded-full object-cover border border-[var(--border)] bg-[#f3f4f6]">` 
+            : `<div class="w-10 h-10 rounded-full border border-[var(--border)] bg-[#f3f4f6]" aria-hidden="true"></div>`
         }
         <div>
-          <h2 class="post-card_author">${author}</h2>
-          <time class="post-card_date">${created}</time>
+          <h2 class="m-0 text-[var(--text)] font-semibold text-[0.95rem]">${author}</h2>
+          <time class="block text-[0.8rem] text-[var(--muted)]">${created}</time>
         </div>
       </header>
       ${mediaUrl ? `
-        <figure class="post-card_media">
-          <img src="${mediaUrl}" alt="${mediaAlt}">
+        <figure class="m-0 p-0">
+          <img src="${mediaUrl}" alt="${mediaAlt}" class="w-full aspect-[16/9] object-cover bg-[#f3f4f6]">
         </figure>` : ``}
-        <div class="post-card_body">
+        <div class="p-4 text-[0.95rem] leading-6 text-[var(--text)]">
           <p>${p.body ? escapeHtml(p.body) : ""}</p>
         </div>
-        <footer class="post-card_actions" aria-label="Post actions">
-          <a href="post/index.html?id=${encodeURIComponent(p.id)}" class="action action-link">Open</a>
+        <footer class="flex items-center gap-4 border-t border-[var(--border)] p-4" aria-label="Post actions">
+          <a href="post/index.html?id=${encodeURIComponent(p.id)}" class="inline-flex items-center gap-1 text-[var(--muted)] text-sm font-medium no-underline hover:underline hover:text-[var(--primary)]">Open</a>
         </footer>
     </article>
     `;
