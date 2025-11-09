@@ -86,22 +86,25 @@ async function unfollowUser(name) {
  */
 export function createProfileHeader(profile, { isOwner = false } = {}) {
     const section = document.createElement("section");
-    section.className = "profile-header";
+    section.className = [
+        "grid grid-cols-[1fr,auto] items-center",
+        "gap-0",
+        "px-4 pt-[14px] pb-[10px] bg-white border border-[var(--border)] rounded-xl shadow",
+        "mt-4 mb-16"
+    ].join(" ");
     section.setAttribute("aria-live", "polite");
     section.setAttribute("aria-busy", "false");
 
     // Avatar
     const img = document.createElement("img");
-    img.className = "profile-header_avatar";
+    img.className =
+        "block w-[72px] h-[72px] rounded-full object-cover border border-[var(--border)] bg-[#f3f4f6] shrink-0";
     img.width = 72;
     img.height = 72;
     img.loading = "eager";
 
     const displayName = profile?.name || profile?.username || "Unknown user";
-    const avatarUrl = 
-      profile?.avatar?.url ||
-      profile?.avatar ||
-      "/images/sky.jpg";
+    const avatarUrl = profile?.avatar?.url || profile?.avatar || "/images/sky.jpg";
 
     img.src = avatarUrl;
     img.alt = `${displayName}'s avatar`;
@@ -109,19 +112,21 @@ export function createProfileHeader(profile, { isOwner = false } = {}) {
 
     // Main info 
     const main = document.createElement("div");
-    main.className = "profile-header_main";
+    main.className = "min-w-0 m-0 p-0";
 
     const h1 = document.createElement("h1");
-    h1.className = "profile-header_name";
+    h1.className = "m-0 text-[1.25rem] text-[var(--text)] font-bold truncate";
     h1.textContent = displayName;
 
     const handle = document.createElement("p");
-    handle.className = "profile-header_handle";
+    handle.className = 
+      "mt-[1px] mb-0 text-[var(--muted)] text-[0.95rem] whitespace-nowrap";
     handle.textContent = profile?.email ? profile.email : `@${displayName}`;
 
     // Stats
     const statsList = document.createElement("ul");
-    statsList.className = "profile-header_stats";
+    statsList.className = 
+      "flex gap-4 p-0 m-0 list-none whitespace-nowrap";
     statsList.setAttribute("aria-label", "Profile statistics");
 
     const nf = new Intl.NumberFormat();
@@ -143,14 +148,30 @@ export function createProfileHeader(profile, { isOwner = false } = {}) {
         makeStatItem(nf.format(followingCount), "Following")
     );
 
-    main.append(h1, handle, statsList);
+    const meta = document.createElement("div");
+    meta.className = "flex flex-col items-start gap-1 mt-1";
+    meta.append(handle, statsList);
+    main.append(h1, meta);
+
+    //NEW 
+    const left = document.createElement("div");
+    left.className = "flex items-center gap-4";
+    left.append(img,main);
 
     // Actions (right column)
     const actions = document.createElement("div");
+    actions.className = "flex gap-2";
+    left.style.gridColumn = "1";
+    left.style.gridRow = "1";
+    actions.style.gridColumn ="2";
+    actions.style.gridRow = "1";
+    actions.style.alignSelf = "center";
+    actions.style.justifySelf = "end";
+
     if (isOwner) {
         const edit = document.createElement("a");
         edit.href = "/profile/edit.html";
-        edit.className = "btn btn-secondary";
+        edit.className = "px-4 py-2 text-[0.95rem] rounded-lg border border-[var(--border)] bg-white text-[var(--text)] font-semibold no-underline";
         edit.textContent = "Edit profile";
         actions.append(edit);
     } else {
@@ -161,7 +182,8 @@ export function createProfileHeader(profile, { isOwner = false } = {}) {
           : false;
 
         const btn = document.createElement("button");
-        btn.className = "btn btn-primary";
+        btn.className = 
+          "px-4 py-2 rounded-xl bg-[var(--primary)] text-white font-semibold transition hover:bg-[var(--primary-700)]";
         btn.textContent = alreadyFollowing ? "Unfollow" : "Follow";
         btn.setAttribute("aria-pressed", alreadyFollowing ? "true" : "false");
 
@@ -194,7 +216,7 @@ export function createProfileHeader(profile, { isOwner = false } = {}) {
     }
 
     // Compose 
-    section.append(img, main, actions);
+    section.append(left, actions);
     return section;
 }
 
@@ -206,11 +228,14 @@ export function createProfileHeader(profile, { isOwner = false } = {}) {
  */
 function makeStatItem(num, label) {
     const li = document.createElement("li");
+    li.className = "flex items-baseline gap-2";
+
     const numEl = document.createElement("span");
-    numEl.className = "stat_num";
+    numEl.className = "font-bold text-[var(--text)]";
     numEl.textContent = num;
+
     const labelEl = document.createElement("span");
-    labelEl.className = "stat_label";
+    labelEl.className = "text-[var(--muted)] text-[0.9rem]";
     labelEl.textContent = label;
     li.append(numEl, labelEl);
     return li;
@@ -236,17 +261,20 @@ export async function renderProfileHeader(mount, profileName) {
 
     // Loading block (styled by your grid card container)
     const loader = document.createElement("section");
-    loader.className = "profile-header";
+    loader.className = [
+        "grid items-center gap-4 p-4 bg-white border border-[var(--border)] rounded-xl shadow mt-4 mb-16",
+        "grid-cols-[auto,1fr] md:grid-cols-[auto,1fr,auto]",
+    ].join(" ");
     loader.setAttribute("aria-busy", "true");
     loader.innerHTML = `
-      <div class="profile-header_skeleton" style="width:72px;height:72px;border-radius:8px;background:#f3f4f6;border:1px solid var(--border)"></div>
-      <div class="profile-header_main">
-        <h1 class="profile-header_name">Loading...</h1>
-        <p class="profile-header_handle">@loading</p>
-        <ul class="profile-header_stats">
-          <li><span class="stat_num">-</span><span class="stat_label">Posts</span></li>
-          <li><span class="stat_num">-</span><span class="stat_label">Followers</span></li>
-          <li><span class="stat_num">-</span><span class="stat_label">Following</span></li>
+      <div style="width:72px;height:72px;border-radius:9999px;background:#f3f4f6;border:1px solid var(--border)"></div>
+      <div class="min-w-0">
+        <h1 class="m-0 text-[var(--text)] font-bold truncate leading-snug">Loading...</h1>
+        <p class="mt-[0.2rem] mb-[0.6rem] text-[var(--muted)] text-[0.95rem]">@loading</p>
+        <ul class="flex gap-4 p-0 m-0 list-none">
+          <li><span class="font-bold text-[var(--text)]">-</span><span class="text-[var(--muted)] text-[0.9rem]">Posts</span></li>
+          <li><span class="font-bold text-[var(--text)]">-</span><span class="text-[var(--muted)] text-[0.9rem]">Followers</span></li>
+          <li><span class="font-bold text-[var(--text)]">-</span><span class="text-[var(--muted)] text-[0.9rem]">Following</span></li>
         </ul>
       </div>
       <div></div>
